@@ -31,5 +31,3 @@ circuit = 2 * math.pi * radius
 area_circle = math.pi * radius ** 2
 
 print(f"Довжина кола = {circuit:.2f} \nПлоща кола = {area_circle:.2f}")
-
-
