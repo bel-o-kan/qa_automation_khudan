@@ -31,3 +31,10 @@ circuit = 2 * math.pi * radius
 area_circle = math.pi * radius ** 2
 
 print(f"Довжина кола = {circuit:.2f} \nПлоща кола = {area_circle:.2f}")
+
+# task_3
+usd_rate = 36.57  # поточний курс долара
+uah_amount = float(input("Введіть суму в гривнях, яку потрібно сконвертувати: "))  # гривні які порібно конвертувати
+usd_amount = uah_amount / usd_rate  # конвертуємо гривні в долари
+usd_amount = round(usd_amount, 2)  # заокруглюємо до двох знаків після коми
+print(f"Поточний курс складає: {usd_rate} гривень \n{uah_amount} гривень дорівнює {usd_amount} доларів.")
