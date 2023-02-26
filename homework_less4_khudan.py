@@ -1,5 +1,6 @@
 notes = []
 
+# цикл while, працює доти, доки користувач не введе команду "Exit".
 while True:
     command = input("Введіть команду (add/earliest/latest/longest/shortest/Exit): ")
 
