@@ -91,4 +91,4 @@ for word in words:
 
 # виведення слів та їхніх частот
 for word, count in freq.items():
-    print(word, ':', count)
+    print(f"({word}:{count})", end=' ')
