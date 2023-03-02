@@ -78,7 +78,7 @@ for num in common_list:
 
 
 # task_5
-words = ('one', 'two', 'three', 'one', 'two', 'one', 'five')
+words = ('one', 'two', 'three', 'one', 'four', 'five', 'seven', 'ten', 'seven', 'one')
 
 # створення словника та підрахунок кількості кожного слова
 freq = {}
