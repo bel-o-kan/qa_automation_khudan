@@ -17,3 +17,11 @@ strings = ["example (.com)", "github (.com)", "stackoverflow (.com)"]
 for string in strings:
     result = re.sub(r' \(.+?\)', '', string)
     print(result)
+
+
+# task_3
+
+text = input("Введіть текст: ")
+formatted_text = re.sub(r'(?<!^)(?=[A-ZА-Я])', ' ', text)
+
+print("Відформатований текст:", formatted_text)
