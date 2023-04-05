@@ -1,0 +1,1 @@
+from .package_2 import add, subtract, square, multiply, divide
