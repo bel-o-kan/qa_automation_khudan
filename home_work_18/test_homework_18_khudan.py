@@ -96,7 +96,6 @@ def test_check_basket():
     goods = wait.until(EC.visibility_of_element_located(('xpath' , goods_header)))
     assert goods.text == "Sony PlayStation 5 White Digital Edition" , "Товар не знайдений у корзині"
 
-    time.sleep(2)
     driver.quit()
 
 
