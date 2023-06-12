@@ -1,25 +1,14 @@
-from selenium.webdriver import Chrome, Keys
+from selenium.webdriver import Chrome
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+from selenium.webdriver.chrome.options import Options
+
 
 def test_search_lego_duplo():
-    driver = Chrome('home_work_18/drivers/chromedriver')
-    driver.get('https://rozetka.com.ua/')
-    wait = WebDriverWait(driver, 10)
-    search_field = "//div/input[@name='search']"
-    search_input = driver.find_element(by='xpath', value=search_field)
-    search_input.send_keys('Lego')
-    search_input.send_keys(Keys.ENTER)
-    find_image_link = "//a/img[@alt='LEGO® DUPLO®']"
-    element = wait.until(EC.visibility_of_element_located(('xpath', find_image_link)))
-    # перевіряємо шо по можна перейти в розділ
-    element.click()
-    time.sleep(3)
-    driver.quit()
-
-def test_game_categories():
-    driver = Chrome('home_work_18/drivers/chromedriver')
+    options = Options()
+    driver = Chrome(options=options)
     driver.get('https://rozetka.com.ua/')
     wait = WebDriverWait(driver, 5)
     menu = "//button[text()=' Каталог ']"
@@ -34,14 +23,15 @@ def test_game_categories():
 
 def test_add_ps5_digit_ed():
     """додавання товара в корзину"""
-    driver = Chrome('home_work_18/drivers/chromedriver')
+    options = Options()
+    driver = Chrome(options=options)
     driver.get('https://rozetka.com.ua/')
     wait = WebDriverWait(driver, 5)
     menu = "//button[text()=' Каталог ']"
     categorie = "(//a[text()='Товари для геймерів'])[2]"
     consoles_link = "//a/img[@alt='Ігрові приставки']"
-    add_button = "//div[contains(@class, 'goods-tile__inner')]//a[contains(@title, 'Sony PlayStation 5 White Digital " \
-                 "Edition')]/ancestor::div[@class='goods-tile__inner']//button[@aria-label='Купити']"
+    add_button = "//div[contains(@class, 'goods-tile__inner')]//a[contains(@title, 'Ігрова приставка PS5 PlayStation " \
+                 "5')]/ancestor::div[@class='goods-tile__inner']//button[@aria-label='Купити']"
     navigate_menu = wait.until(EC.visibility_of_element_located(('xpath', menu)))
     navigate_menu.click()
 
@@ -61,17 +51,18 @@ def test_add_ps5_digit_ed():
 
 def test_check_basket():
     """перевірка, що товар додано в корзину"""
-    driver = Chrome('home_work_18/drivers/chromedriver')
+    options = Options()
+    driver = Chrome(options=options)
     driver.get('https://rozetka.com.ua/')
     wait = WebDriverWait(driver , 5)
     header_logo = "//div//a[@class='header__logo']"
     menu = "//button[text()=' Каталог ']"
     categorie = "(//a[text()='Товари для геймерів'])[2]"
     consoles_link = "//a/img[@alt='Ігрові приставки']"
-    add_button = "//div[contains(@class, 'goods-tile__inner')]//a[contains(@title, 'Sony PlayStation 5 White Digital " \
-                 "Edition')]/ancestor::div[@class='goods-tile__inner']//button[@aria-label='Купити']"
+    add_button = "//div[contains(@class, 'goods-tile__inner')]//a[contains(@title, 'Ігрова приставка PS5 PlayStation " \
+                 "5')]/ancestor::div[@class='goods-tile__inner']//button[@aria-label='Купити']"
     basket_button = "//li[@class='header-actions__item header-actions__item--cart']"
-    goods_header = "//a[@class='cart-product__title'][@title='Sony PlayStation 5 White Digital Edition']"
+    goods_header = "//a[@class='cart-product__title'][@title='Ігрова приставка PS5 PlayStation 5']"
 
     navigate_menu = wait.until(EC.visibility_of_element_located(('xpath' , menu)))
     navigate_menu.click()
@@ -82,11 +73,11 @@ def test_check_basket():
     consoles = wait.until(EC.visibility_of_element_located(('xpath' , consoles_link)))
     consoles.click()
 
-    time.sleep(1)
+    time.sleep(2)
     add_to_basket = driver.find_element(by='xpath' , value=add_button)
     add_to_basket.click()
 
-    time.sleep(1)
+    time.sleep(3)
     main_page = driver.find_element(by='xpath' , value=header_logo)
     main_page.click()
 
@@ -94,13 +85,14 @@ def test_check_basket():
     basket.click()
 
     goods = wait.until(EC.visibility_of_element_located(('xpath' , goods_header)))
-    assert goods.text == "Sony PlayStation 5 White Digital Edition" , "Товар не знайдений у корзині"
+    assert goods.text == "Ігрова приставка PS5 PlayStation 5" , "Товар не знайдений у корзині"
 
     driver.quit()
 
 
 def test_points_of_delivery_present():
-    driver = Chrome('home_work_18/drivers/chromedriver')
+    options = Options()
+    driver = Chrome(options=options)
     driver.get('https://rozetka.com.ua/')
     wait = WebDriverWait(driver , 5)
     points_of_delivery_link = "(//a[@class ='button button--medium button--with-icon main-links__help " \
